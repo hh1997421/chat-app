@@ -23,10 +23,10 @@
           <%# select要素のname属性にroom[user_ids][]を指定し、option要素のvalue属性にuser.idを指定 %>
           <%# # room[user_ids][]で送られるパラメーター %>
           <%# {"room" => {"user_ids" => ["選択したユーザーのid"]}} %>
-          <option value=<%= user.name %>><%= user.name %></option>
+          <option value=<%= user.id %>><%= user.name %></option>
           <% end %>
         </select>
-        <input name="room[user_ids][]" type="hidden" value=<%= current_user.id %>>
+        <input name="room[user_ids][]" type="hidden" value=<%= current_user.id%>>
       </div>
     </div>
     <div class='chat-room-form__field'>
