@@ -1,4 +1,8 @@
 class RoomsController < ApplicationController
+  # rooms/index.html.erb作成のため
+  def index
+  end
+  
   # チャットルームの新規作成なので「new」アクション
   def new
     # form_withに渡す引数として、値が空のRoomインスタンスを@roomに代入
