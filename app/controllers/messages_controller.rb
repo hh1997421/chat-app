@@ -4,6 +4,9 @@ class MessagesController < ApplicationController
     @message = Message.new
     # roomには、Room.find(params[:room_id])と記述することで、paramsに含まれているroom_idを代入
     @room = Room.find(params[:room_id])
+    # チャットルームに紐付いている全てのメッセージ（@room.messages）を@messagesと定義
+    # includes(:user)と記述をすることにより、ユーザー情報を1度のアクセスでまとめて取得することができます
+    @messages = @room.messages.includes(:user)
   end
 
 
@@ -18,6 +21,8 @@ class MessagesController < ApplicationController
     # room_messages_path(@room)（参加しているチャットルームに投稿したメッセージの一覧画面）にリダイレクト
       redirect_to room_messages_path(@room)
     else
+    # また、投稿に失敗したときの処理にも、同様に@messagesを定義しました。renderを用いることで、投稿に失敗した@messageの情報を保持しつつindex.html.erbを参照することができます
+      @messages = @room.messages.includes(:user)
     # 失敗した場合、indexアクションが実行され、同じページに戻る
       render :index
     end
