@@ -3,19 +3,19 @@
     <%= link_to current_user.name, edit_user_path(current_user) %>
  </div>
  <div class="create-room">
-   <a href="#">チャットを作成する</a>
+   <%= link_to "チャットを作成する", new_room_path %>
   </div>
  </div>
  
 <div class="rooms">
+<%# チャットルームは複数作成出来るので、「eachメソッド」を使って全てのチャットルームに対して同じ処理を繰り返し実行します。 %>
+<%# 今回でしたら、「チャットルーム名を表示する」という処理を繰り返し実行しています。 %>
+<% current_user.rooms.each do |room| %>
  <div class="room">
   <div class="room-name">
-   <a href="#">techroom1</a>
+  <%# room.nameの「name」は、roomsテーブルのカラム名 %>
+   <a href="#"><%= room.name %></a>
   </div>
    </div>
- <div class="room">
-  <div class="room-name">
-   <a href="#">techroom2</a>
- </div>
-  </div>
+ <% end %>
    </div>
