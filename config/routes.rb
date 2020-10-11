@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
-  get 'messages/index'
-  # ビュー実装のための仮ルーティング
-  root to: "messages#index"
+  # ビュー実装のためのrooms/index.html.erbルーティング
+  root to: "rooms#index"
   resources :users, only: [:edit, :update]
+  resources :rooms, only: [:new, :create]
 end
