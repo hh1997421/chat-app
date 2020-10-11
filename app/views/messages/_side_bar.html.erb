@@ -14,8 +14,8 @@
  <div class="room">
   <div class="room-name">
   <%# room.nameの「name」は、roomsテーブルのカラム名 %>
-   <a href="#"><%= room.name %></a>
+   <%= link_to room.name, room_messages_path(room) %>
   </div>
    </div>
  <% end %>
-   </div>
+</div>
